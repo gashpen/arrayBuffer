@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-prototype-builtins */
 function destructuring(obj) {
+  const arr = [];
   for (const i of obj.special) {
-    if (!i.hasOwnProperty('description')) {
-      i.description = 'Описание недоступно';
-    }
+    const {
+      id, name, icon, description = 'Описание недоступно',
+    } = i;
+    arr.push({
+      id, name, icon, description,
+    });
   }
-  return obj.special;
+  return arr;
 }
 export default destructuring;
