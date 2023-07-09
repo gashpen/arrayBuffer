@@ -1,15 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-prototype-builtins */
-function destructuring(obj) {
-  const arr = [];
-  for (const i of obj.special) {
-    const {
-      id, name, icon, description = 'Описание недоступно',
-    } = i;
-    arr.push({
-      id, name, icon, description,
-    });
+function destructuring( {special} ) {
+  for (let i in special) {
+      const attack = special[i];
+      special[i] = 'description' in attack ? attack : Object.assign(attack, {description: 'Описание недоступно'})
   }
-  return arr;
-}
+  return special;
+};
+
 export default destructuring;
